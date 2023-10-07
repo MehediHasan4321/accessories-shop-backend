@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "header_banners",
+  "info": {
+    "singularName": "header-banner",
+    "pluralName": "header-banners",
+    "displayName": "headerBanner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150,
+      "minLength": 20
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "bgImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

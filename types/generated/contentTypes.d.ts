@@ -869,38 +869,39 @@ export interface ApiProductProduct extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
     quantity: Attribute.Integer & Attribute.Required;
-    rating: Attribute.Integer;
     image: Attribute.Media & Attribute.Required;
-    subImage1: Attribute.Media;
-    subImage2: Attribute.Media;
-    subImage3: Attribute.Media;
-    subImage4: Attribute.Media;
     product_collection: Attribute.Relation<
       'api::product.product',
       'oneToOne',
       'api::product-category.product-category'
-    >;
-    sub_categories: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::sub-category.sub-category'
     >;
     product_brand: Attribute.Relation<
       'api::product.product',
       'oneToOne',
       'api::product-brand.product-brand'
     >;
-    socila_medias: Attribute.Relation<
+    description: Attribute.RichText;
+    reviews: Attribute.Relation<
       'api::product.product',
       'oneToMany',
-      'api::socila-media.socila-media'
+      'api::review.review'
     >;
     tags: Attribute.Relation<
       'api::product.product',
       'oneToMany',
       'api::tag.tag'
     >;
-    description: Attribute.RichText;
+    socila_medias: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::socila-media.socila-media'
+    >;
+    rating: Attribute.Integer;
+    sub_categories: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::sub-category.sub-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,6 +1037,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
     singularName: 'review';
     pluralName: 'reviews';
     displayName: 'review';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1043,15 +1045,15 @@ export interface ApiReviewReview extends Schema.CollectionType {
   attributes: {
     review: Attribute.String & Attribute.Required;
     rating: Attribute.Integer;
-    users_permissions_user: Attribute.Relation<
-      'api::review.review',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     product: Attribute.Relation<
       'api::review.review',
       'oneToOne',
       'api::product.product'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1076,7 +1078,7 @@ export interface ApiSocilaMediaSocilaMedia extends Schema.CollectionType {
   info: {
     singularName: 'socila-media';
     pluralName: 'socila-medias';
-    displayName: 'SocilaMedia';
+    displayName: 'SocialMedia';
     description: '';
   };
   options: {
@@ -1085,11 +1087,6 @@ export interface ApiSocilaMediaSocilaMedia extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     icon: Attribute.Media & Attribute.Required;
-    product: Attribute.Relation<
-      'api::socila-media.socila-media',
-      'manyToOne',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1127,16 +1124,6 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
         maxLength: 100;
       }>;
     subCategoryImage: Attribute.Media;
-    product_collection: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'manyToOne',
-      'api::product-category.product-category'
-    >;
-    product: Attribute.Relation<
-      'api::sub-category.sub-category',
-      'manyToOne',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1161,17 +1148,13 @@ export interface ApiTagTag extends Schema.CollectionType {
     singularName: 'tag';
     pluralName: 'tags';
     displayName: 'tag';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     tag: Attribute.String & Attribute.Required;
-    product: Attribute.Relation<
-      'api::tag.tag',
-      'manyToOne',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

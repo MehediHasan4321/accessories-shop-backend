@@ -4,7 +4,8 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "tag"
+    "displayName": "tag",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,12 +15,6 @@
     "tag": {
       "type": "string",
       "required": true
-    },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "tags"
     }
   }
 }

@@ -24,45 +24,10 @@
       "type": "integer",
       "required": true
     },
-    "rating": {
-      "type": "integer"
-    },
     "image": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "subImage1": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "subImage2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "subImage3": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "subImage4": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images"
       ]
@@ -72,31 +37,36 @@
       "relation": "oneToOne",
       "target": "api::product-category.product-category"
     },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sub-category.sub-category",
-      "mappedBy": "product"
-    },
     "product_brand": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product-brand.product-brand"
     },
-    "socila_medias": {
+    "description": {
+      "type": "richtext"
+    },
+    "reviews": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::socila-media.socila-media",
-      "mappedBy": "product"
+      "target": "api::review.review"
     },
     "tags": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "product"
+      "target": "api::tag.tag"
     },
-    "description": {
-      "type": "richtext"
+    "socila_medias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::socila-media.socila-media"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-category.sub-category"
     }
   }
 }

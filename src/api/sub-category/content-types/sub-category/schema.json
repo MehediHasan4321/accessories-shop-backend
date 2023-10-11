@@ -25,18 +25,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "product_collection": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product-category.product-category",
-      "inversedBy": "sub_categories"
-    },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "sub_categories"
     }
   }
 }

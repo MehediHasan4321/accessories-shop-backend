@@ -4,7 +4,7 @@
   "info": {
     "singularName": "socila-media",
     "pluralName": "socila-medias",
-    "displayName": "SocilaMedia",
+    "displayName": "SocialMedia",
     "description": ""
   },
   "options": {
@@ -18,17 +18,11 @@
     },
     "icon": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
         "images"
       ]
-    },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "socila_medias"
     }
   }
 }
